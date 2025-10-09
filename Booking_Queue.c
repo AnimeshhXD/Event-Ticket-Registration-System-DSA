@@ -30,28 +30,3 @@ Ticket dequeue() {
     printf("Booking processed: %s, Event ID: %d\n", t.customerName, t.eventID);
     return t;
 }
-
-int main() {
-    int choice;
-    while (1) {
-        printf("\n Booking Queue \n");
-        printf("1. Enqueue Booking\n2. Dequeue Booking\n3. Exit\n");
-        printf("Enter choice: ");
-        scanf("%d", &choice);
-        if (choice == 1) {
-            Ticket t;
-            printf("Enter Customer Name: ");
-            scanf(" %[^\n]", t.customerName);
-            printf("Enter Event ID: ");
-            scanf("%d", &t.eventID);
-            enqueue(t);
-        } else if (choice == 2) {
-            dequeue();
-        } else if (choice == 3) {
-            break;
-        } else {
-            printf("Invalid choice!\n");
-        }
-    }
-    return 0;
-}
