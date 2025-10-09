@@ -43,28 +43,3 @@ Ticket dequeueCircular() {
     }
     return t;
 }
-
-int main() {
-    int choice;
-    while (1) {
-        printf("\n Last Minute Booking (Circular Queue) \n");
-        printf("1. Enqueue Last Minute Booking\n2. Dequeue Last Minute Booking\n3. Exit\n");
-        printf("Enter choice: ");
-        scanf("%d", &choice);
-        if (choice == 1) {
-            Ticket t;
-            printf("Enter Customer Name: ");
-            scanf(" %[^\n]", t.customerName);
-            printf("Enter Event ID: ");
-            scanf("%d", &t.eventID);
-            enqueueCircular(t);
-        } else if (choice == 2) {
-            dequeueCircular();
-        } else if (choice == 3) {
-            break;
-        } else {
-            printf("Invalid choice!\n");
-        }
-    }
-    return 0;
-}
