@@ -4,28 +4,25 @@
 #include "custom_ticket_list.h"
 #include "venue_selection.h"
 #include "ticket_id_lookup.h"
+#include "ticket.h"
 
 int main() {
-  
-    Ticket t1 = {"Animesh", 101};
+    Ticket t1 = {101, "Animesh"};
     enqueue(t1);
-    Ticket t2 = {"Vedant", 102};
+    Ticket t2 = {102, "Vedant"};
     enqueue(t2);
     Ticket processed = dequeue();
-    printf("Processed Booking: %s, Event ID: %d\n", processed.customerName, processed.eventID);
+    printf("Processed Booking: %s, Ticket ID: %d\n", processed.name, processed.id);
 
-    
-    Ticket lt1 = {"Heet", 201};
+    Ticket lt1 = {201, "Heet"};
     enqueueCircular(lt1);
     Ticket processedLM = dequeueCircular();
-    printf("Processed Last Minute Booking: %s, Event ID: %d\n", processedLM.customerName, processedLM.eventID);
+    printf("Processed Last Minute Booking: %s, Ticket ID: %d\n", processedLM.name, processedLM.id);
 
-   
     addTicket(301, "VIP Pass");
     addTicket(302, "Standard Pass");
     displayTickets();
 
-  
     VenueNode* root = NULL;
     root = insertVenue(root, 401, "Stadium A");
     root = insertVenue(root, 402, "Convention Center");
@@ -33,18 +30,17 @@ int main() {
     printf("Venue List (Inorder Traversal):\n");
     inorderTraversal(root);
 
-  
     insertTicket(501, "Gold Circle");
     insertTicket(502, "Silver Zone");
-    Ticket* found = searchTicket(501);
+    TicketNodeLL* found = searchTicket(501);
     if (found)
-        printf("Ticket Found: ID=%d, Name=%s\n", found->id, found->name);
+        printf("Ticket Found: ID=%d, Name=%s\n", found->ticket.id, found->ticket.name);
     else
         printf("Ticket ID 501 not found.\n");
 
-    Ticket* notFound = searchTicket(999);
+    TicketNodeLL* notFound = searchTicket(999);
     if (notFound)
-        printf("Ticket Found: ID=%d, Name=%s\n", notFound->id, notFound->name);
+        printf("Ticket Found: ID=%d, Name=%s\n", notFound->ticket.id, notFound->ticket.name);
     else
         printf("Ticket ID 999 not found.\n");
 
