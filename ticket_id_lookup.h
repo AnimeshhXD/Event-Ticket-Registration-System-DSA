@@ -1,18 +1,19 @@
 #ifndef TICKET_ID_LOOKUP_H
 #define TICKET_ID_LOOKUP_H
 
+#include "ticket.h"
+
 #define TABLE_SIZE 10
 
-typedef struct Ticket {
-    int id;
-    char name[50];
-    struct Ticket* next;
-} Ticket;
+typedef struct TicketNodeLL {
+    Ticket ticket;
+    struct TicketNodeLL* next;
+} TicketNodeLL;
 
-extern Ticket* hashTable[TABLE_SIZE];
+extern TicketNodeLL* hashTable[TABLE_SIZE];
 
 int hash(int ticketID);
 void insertTicket(int id, const char* name);
-Ticket* searchTicket(int id);
+TicketNodeLL* searchTicket(int id);
 
-#endif 
+#endif
