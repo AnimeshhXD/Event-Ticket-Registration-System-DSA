@@ -1,14 +1,12 @@
 #ifndef LAST_MINUTE_BOOKING_H
 #define LAST_MINUTE_BOOKING_H
 
-#define MAX 100
+#include "ticket.h"
 
-typedef struct {
-    char customerName[50];
-    int eventID;
-} Ticket;
+#define MAX 100
 
 void enqueueCircular(Ticket t);
 Ticket dequeueCircular();
 
 #endif 
+
