@@ -1,17 +1,12 @@
 #include <stdio.h>
 #include <string.h>
-#define MAX 100
-
-typedef struct {
-    char customerName[50];
-    int eventID;
-} Ticket;
+#include "last_minute_booking.h"
 
 Ticket cqueue[MAX];
 int frontC = -1, rearC = -1;
 
 void enqueueCircular(Ticket t) {
-    if ((frontC == 0 && rearC == MAX-1) || (rearC == (frontC-1) % (MAX-1))) {
+    if ((frontC == 0 && rearC == MAX-1) || (rearC == (frontC -1) % (MAX-1))) {
         printf("Circular Queue Full! Cannot add last minute booking.\n");
         return;
     }
@@ -23,17 +18,16 @@ void enqueueCircular(Ticket t) {
         rearC++;
     }
     cqueue[rearC] = t;
-    printf("Last minute booking added for %s, Event ID: %d\n", t.customerName, t.eventID);
+    printf("Last minute booking added for %s, Ticket ID: %d\n", t.name, t.id);
 }
 
 Ticket dequeueCircular() {
-    Ticket t = {"", -1};
+    Ticket t = {-1, ""};
     if (frontC == -1) {
         printf("Circular Queue Empty! No last minute bookings.\n");
         return t;
     }
     t = cqueue[frontC];
-    printf("Last minute booking processed: %s, Event ID: %d\n", t.customerName, t.eventID);
     if (frontC == rearC) {
         frontC = rearC = -1;
     } else if (frontC == MAX-1) {
