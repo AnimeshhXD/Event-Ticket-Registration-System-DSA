@@ -1,6 +1,8 @@
 #ifndef CUSTOM_TICKET_LIST_H
 #define CUSTOM_TICKET_LIST_H
 
+#include "ticket.h"
+
 typedef struct TicketNode {
     int ticketID;
     char ticketName[50];
