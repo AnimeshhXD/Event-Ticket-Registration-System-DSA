@@ -1,12 +1,9 @@
 #ifndef BOOKING_QUEUE_H
 #define BOOKING_QUEUE_H
 
-#define MAX 100
+#include "ticket.h"
 
-typedef struct {
-    char customerName[50];
-    int eventID;
-} Ticket;
+#define MAX 100
 
 void enqueue(Ticket t);
 Ticket dequeue();
